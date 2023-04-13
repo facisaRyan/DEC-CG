@@ -1,0 +1,25 @@
+<form (ngSubmit)="submit()" [formGroup]="safeHouseForm" #formDir="ngForm">
+  <div class="form-group">
+      <label for="name">Nome do abrigo:</label>
+      <input class="form-control mb-3" type="text" placeholder="Informe o nome do abrigo" formControlName="name" required>
+      <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+          <p>O nome do abrigo é obrigatorio.</p>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="description">Rua do abrigo:</label>
+      <input class="form-control mb-3" placeholder="Informe a rua do abrigo" formControlName="adress" required>
+      <div *ngIf="adress.invalid && formDir.submitted" class="validation-error">
+          <p>O endereço do abrigo é obrigatorio.</p>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="number">Numero do endeço:</label>
+    <input class="form-control mb-3" placeholder="Informe o numero do endereço do abrigo" formControlName="number" required>
+    <div *ngIf="number.invalid && formDir.submitted" class="validation-error">
+        <p>O numero do endereço do abrigo é obrigatorio.</p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary ">Cadastrar abrigo</button>
+</form>

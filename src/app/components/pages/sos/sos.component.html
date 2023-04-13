@@ -1,0 +1,22 @@
+<div class="">
+  <h1> Pedidos de Socorro </h1>
+  <div *ngIf="soSs.length > 0; else noSoSs">
+    <div class="">
+      <div class="texto" *ngFor="let sos of soSs">
+        <div class="titulo">Autor:</div><p class="dados">{{sos.autor}}</p>
+        <div class="titulo">Endereço:</div><p class="dados">{{sos.endereco}}</p>
+        <div class="titulo">Status:</div><p class="dados" id="status">Em resgate</p>
+      </div>
+      <div class="detalhes">
+        <p class="titulo">Detalhes:</p>
+        <p class="textoDetalhes">A pessoa se encotra em sua casa ilhada pela forte chuva que temos ocorrendo na cidade
+          e necessita de resgate urgente, total de pessoas na casa: 4 pessoas
+        </p>
+     </div>
+    </div>
+  </div>
+</div>
+<ng-template #noSoSs>
+  <h1> Nenhum pedido de socorro foi solicitado até o momento!</h1>
+</ng-template>
+

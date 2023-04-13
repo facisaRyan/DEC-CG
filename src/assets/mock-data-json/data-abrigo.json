@@ -1,0 +1,6 @@
+[
+    {"name" : "Shopping", "adress":"sla", "lat" : -7.2347669, "long" : -35.8713648 },
+    {"name" : "Parque do povo", "adress":"sla", "lat" : -7.2237449, "long" : -35.8897697 },
+    {"name" : "Facisa", "adress":"sla", "lat" : -7.2499503, "long" : -35.8724141},
+    {"name" : "UFCG", "adress":"sla","lat" :  -7.2171368,"long" : -35.914239}
+]

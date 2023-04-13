@@ -1,0 +1,45 @@
+
+    <div class="">
+
+
+      <h1> Notificações Cadastradas </h1> <br>
+
+
+      <div *ngIf="notifications.length > 0; else noNotifications">
+        <table class="table">
+          <div class="table" *ngFor="let notification of notifications"> <br>
+            <tr>
+              <th id="numero" scope="row">Protocolo</th>
+              <th scope="col">Autor:</th>
+              <th scope="col">Endereço:</th>
+              <th scope="col">Tipo de Notificação:</th>
+              <th scope="col">Nível de Prioridade:</th>
+            </tr>
+            <tr>
+              <td>{{notification.notificationId}}</td>
+              <td>{{notification.autor}}</td>
+              <td>{{notification.endereco}}</td>
+              <td>{{notification.tipo}}</td>
+              <td><button id="detalhes" type="button" class="btn btn-primary"><a routerLink="{{notification.notificationId}}">Detalhes</a> </button></td>
+            </tr> <br>
+
+          </div>
+          </table>
+        </div>
+      </div>
+
+
+    <ng-template #noNotifications>
+      <h1> Nenhuma notificação foi cadastrada até o momento!</h1>
+    </ng-template>
+
+
+
+
+
+
+
+
+
+
+

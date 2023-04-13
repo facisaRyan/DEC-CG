@@ -1,0 +1,7 @@
+[
+    {"notificationId": "234568GHWYA", "lat" : -7.2347669, "long" : -35.8713648, "autor" : "Toin Farias", "endereco":"Lagoa de Roça", "tipo": "Interdição em estrada", "descricao":"...", "img":"url"},
+    {"notificationId": "244DHJSKDGH", "lat" : -7.2347669, "long" : -35.8713648, "autor" : "Gabriel Leão", "endereco":"Catolé", "tipo": "Alagamento", "descricao":"...", "img":"url"},
+    {"notificationId": "244445SKDGH", "lat" : -7.2347669, "long" : -35.8713648, "autor" : "Ayrton", "endereco":"Alto Branco", "tipo": "Barranco", "descricao":"...", "img":"url"},
+    {"notificationId": "25555JSKDGH", "lat" : -7.2347669, "long" : -35.8713648, "autor" : "Ivo Miranda", "endereco":"Jardim Tavares", "tipo": "Alagamento", "descricao":"...", "img":"url"},
+    {"notificationId": "26666JSKDGH", "lat" : -7.2347669, "long" : -35.8713648, "autor" : "Lucas Rian", "endereco":"Ramadinha", "tipo": "Interdição em estrada", "descricao":"...", "img":"url"}
+]
