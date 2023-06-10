@@ -4,7 +4,7 @@ export interface Sos {
   author: {
     name: string;
     age: number;
-    adress: string;
+    address: string;
   };
   creationDate : Date;
 }
