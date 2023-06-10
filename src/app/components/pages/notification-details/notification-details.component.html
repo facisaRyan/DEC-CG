@@ -1,16 +1,28 @@
-<p>{{notification?.imgUrl}}</p>
-<div class="">
-    <h1> Pedidos de Socorro </h1>
-        <div class="texto">
-          <div class="titulo">Autor:</div><p class="dados">{{notification?.autor}}</p>
-          <div class="titulo">Endereço:</div><p class="dados">{{notification?.endereco}}</p>
-          <div class="titulo">Status:</div><p class="dados" id="status">Em resgate</p>
-        </div>
-        <div class="detalhes">
-          <p class="titulo">Detalhes:</p>
-          <p class="textoDetalhes"> Estrada interditada devido a forte chuvas, que impedem a passagem de carros
-            e pessoas pela ponte
-          </p>
-          <img src="../../../../assets/imagens/ponte.jpg" alt="foto enviada">
-        </div>
-  </div>
+
+   <ng-container *ngIf="(appState$ | async) as appState" [ngSwitch]="appState.dataState" >
+    <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+      <div class="col-md-12 single-note-item text-center mt-4">
+        <div class="spinner-border text-info" role="status"></div>
+      </div>
+    </ng-container>
+    <ng-container  *ngSwitchCase="DataState.LOADED_STATE">
+      <h1> {{appState.appData?.data?.Notification?.title}} </h1>
+      <div class="texto">
+        <div class="titulo">Autor:</div><p class="dados">{{appState.appData?.data?.Notification?.author?.name}}</p>
+        <div class="titulo ">Endereço:</div><p>{{appState.appData?.data?.Notification?.location?.address}}</p>
+        <div class="titulo ">Status:</div><p class="dados" id="status">{{appState.appData?.data?.Notification?.statusProgress}}</p>
+        <div class="titulo">Data criação:</div><p>{{appState.appData?.data?.Notification?.creationDate | date}}</p>
+      </div>
+      <div class="detalhes">
+        <p class="titulo">Detalhes:</p>
+        <p> {{appState.appData?.data?.Notification?.description}}
+        </p>
+        <h3 class="titulo">Anexos:</h3>
+        <img src="../../../../assets/imagens/ponte.jpg" alt="foto enviada">
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+      <div> {{appState.error}}</div>
+    </ng-container>
+  </ng-container>
+

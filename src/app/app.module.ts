@@ -1,3 +1,4 @@
+import { GoogleMapsModule } from '@angular/google-maps';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { NotificationDetailsComponent } from './components/pages/notification-de
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationComponent } from './components/pages/confirmation/confirmation.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +26,16 @@ import { ConfirmationComponent } from './components/pages/confirmation/confirmat
     AddSafeHouseFormComponent,
     SosComponent,
     NotificationDetailsComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

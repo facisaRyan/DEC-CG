@@ -1,48 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { SafeHouse } from '../SafeHouse';
-import { CoordenateData } from '../CoordenateData';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable,  throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { CoordenateData } from '../interfaces/CoordenateData';
+import { SafeHouseResponse } from '../interfaces/responses/SafeHouseResponse';
+import { SafeHouse } from '../interfaces/SafeHouse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SafeHouseService {
 
+  private readonly apiUrl = 'http://www.localhost:8080/safeHouse'
+
   constructor(private http: HttpClient) {}
 
+  // tudinho tlgd
 
+  safeHouses$ = <Observable<SafeHouseResponse>>
+  this.http.get<SafeHouseResponse>(`${this.apiUrl}/all`)
+  .pipe(
+    tap(console.log),
+    catchError(this.handleErro)
+  );
 
-  private _jsonURL = 'assets/mock-data-json/data-abrigo.json';
+  // salvar tlgd
 
-  dados : SafeHouse[] = [];
+  save$ = (safeHouse:SafeHouse) => <Observable<SafeHouseResponse>>
+  this.http.post<SafeHouseResponse>(`${this.apiUrl}/save`, safeHouse)
+  .pipe(
+    tap(console.log),
+    catchError(this.handleErro)
+  )
 
-  public getSafeHouses(): Observable<any>{
-      return this.http.get<SafeHouse[]>(this._jsonURL);
+  private handleErro(err: HttpErrorResponse): Observable<never>{
+    return throwError (()=> err.status);
   }
 
-  public getSafeHousesPlus():  SafeHouse[] {
-    return this.dados;
-  }
 
-  public createSafeHouse(formData: FormData): void{
 
-    var coordenatesURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + formData.get('number')!.toString() + formData.get('adress')!.toString() + ',Campina grande, PB&key=AIzaSyDSHgyszs0dI9KnI6hIh40-k0EjmtoIx2g'
 
-    this.http.get<CoordenateData>(coordenatesURL).subscribe(data =>{
-
-       var safeHouse : SafeHouse = {
-        name: formData.get('name')!.toString(),
-        adress: formData.get('adress')!.toString(),
-        number: formData.get('number')!.toString(),
-        lat: data.results[0].geometry.location.lat,
-        long: data.results[0].geometry.location.lng
-      }
-      console.log(safeHouse)
-      this.dados.push(safeHouse)
-    })
-
-  }
 
 
 }

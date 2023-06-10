@@ -1,37 +1,43 @@
-
-    <div class="">
-
-
-      <h1> Notificações Cadastradas </h1> <br>
-
-
-      <div *ngIf="notifications.length > 0; else noNotifications">
+<ng-container *ngIf="(appState$ | async) as appState" [ngSwitch]="appState.dataState" >
+  <ng-container *ngSwitchCase="DataState.LOADING_STATE">
+    <div class="col-md-12 single-note-item text-center mt-4">
+      <div class="spinner-border text-info" role="status"></div>
+    </div>
+  </ng-container>
+  <ng-container  *ngSwitchCase="DataState.LOADED_STATE">
+      <div *ngIf="appState.appData?.data?.Notifications?.length! > 0; else noNotifications">
         <table class="table">
-          <div class="table" *ngFor="let notification of notifications"> <br>
+          <div class="table" *ngFor="let notification of appState.appData?.data?.Notifications"> <br>
             <tr>
-              <th id="numero" scope="row">Protocolo</th>
               <th scope="col">Autor:</th>
               <th scope="col">Endereço:</th>
               <th scope="col">Tipo de Notificação:</th>
-              <th scope="col">Nível de Prioridade:</th>
+              <th scope="col"></th>
             </tr>
             <tr>
-              <td>{{notification.notificationId}}</td>
-              <td>{{notification.autor}}</td>
-              <td>{{notification.endereco}}</td>
-              <td>{{notification.tipo}}</td>
-              <td><button id="detalhes" type="button" class="btn btn-primary"><a routerLink="{{notification.notificationId}}">Detalhes</a> </button></td>
-            </tr> <br>
-
+              <td>{{notification.author.name}}</td>
+              <td>{{notification.location.address}}</td>
+              <td>{{notification.type}}</td>
+              <td>
+                <button id="detalhes" type="button" class="btn btn-primary"><a routerLink="{{notification.notificationId}}">Detalhes</a>
+                </button>
+              </td>
+            </tr>
           </div>
-          </table>
-        </div>
+        </table>
       </div>
+      <ng-template #noNotifications>
+        <h1> Nenhuma notificação foi cadastrada até o momento!</h1>
+      </ng-template>
+  </ng-container>
+  <ng-container *ngSwitchCase="DataState.ERROR_STATE">
+    <div> {{appState.error}}</div>
+  </ng-container>
+</ng-container>
 
 
-    <ng-template #noNotifications>
-      <h1> Nenhuma notificação foi cadastrada até o momento!</h1>
-    </ng-template>
+
+
 
 
 

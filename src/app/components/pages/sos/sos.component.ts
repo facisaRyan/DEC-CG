@@ -1,6 +1,6 @@
 import { SosService } from './../../../services/sos.service';
 import { Component, OnInit } from '@angular/core';
-import { Sos} from 'src/app/Sos';
+import { Sos} from '../../../interfaces/Sos';
 
 @Component({
   selector: 'app-sos',
@@ -14,9 +14,11 @@ export class SosComponent implements OnInit {
   constructor(private sosService : SosService) { }
 
   ngOnInit(): void {
+    /*
     this.sosService.getSos().subscribe((data)=> {
       this.soSs = data;
     });
+    */
   }
 
 }
